@@ -1,5 +1,10 @@
-<h1 align="center">🤝 lemmy-help</h1>
-<p align="center"><sup>Everyone needs help, so lemmy-help you</sup></p>
+<h1 align="center">:cat2: cats-doc</h1>
+<p align="center"><sup>A CLI to generate vim/nvim help doc from LuaCATS. Forked from lemmy-help.</sup></p>
+
+> [!WARNING]
+>
+> This lemmy-help fork is early WIP.
+> None of the documentation has been migrated yet.
 
 ![lemmy-help](https://user-images.githubusercontent.com/24727447/164423469-b26fea39-2ef7-497c-8156-5a4c01bc30f8.gif "Generating help docs")
 
