@@ -183,6 +183,7 @@ impl Lexer {
         });
 
         let code_lang = ident().then_ignore(space).or_not();
+        let generic_ident = just('[').ignore_then(ident()).then_ignore(just(']'));
 
         let tag = just('@').ignore_then(choice((
             hidden.or(public.clone().ignored()).to(TagType::Skip),
@@ -232,7 +233,7 @@ impl Lexer {
             just("field")
                 .ignore_then(space.ignore_then(private.or(public)).or_not())
                 .then_ignore(space)
-                .then(ident())
+                .then(ident().or(generic_ident))
                 .then(optional)
                 .then_ignore(space)
                 .then(ty.clone())

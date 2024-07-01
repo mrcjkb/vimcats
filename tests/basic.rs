@@ -134,6 +134,7 @@ fn classes() {
 
     ---@class XMen : Homosapien
     ---@field power number Power quantifier
+    ---@field [string] unknown Generic fields
 
     ---@class (exact) XactMen
     ---@field power number Power quantifier
@@ -181,7 +182,8 @@ CommentConfig                                                    *CommentConfig*
 XMen : Homosapien                                                         *XMen*
 
     Fields: ~
-        {power}  (number)  Power quantifier
+        {power}   (number)   Power quantifier
+        {string}  (unknown)  Generic fields
 
 
 XactMen                                                                *XactMen*
