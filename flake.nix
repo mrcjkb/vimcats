@@ -43,20 +43,21 @@
         };
 
         packages = rec {
-          default = lemmy-help;
-          inherit (pkgs) lemmy-help;
+          default = vimcats;
+          inherit (pkgs) vimcats;
         };
       };
       flake = {
         overlays.default = final: prev: {
-          cats-doc = final.rustPlatform.buildRustPackage {
+          vimcats = final.rustPlatform.buildRustPackage {
             pname = "vimcats";
 
             src = self;
 
             version = ((final.lib.importTOML "${self}/Cargo.toml").package).version;
-            cargoDeps = prev.rustPlatform.importCargoLock {
-              lockFile = self + "/Cargo.lock";
+
+            cargoLock = {
+              lockFile = ./Cargo.lock;
             };
 
             buildFeatures = ["cli"];
