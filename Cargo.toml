@@ -9,7 +9,7 @@ homepage = "https://github.com/mrcjkb/vimcats"
 repository = "https://github.com/mrcjkb/vimcats"
 license = "MIT"
 readme = "README.md"
-keywords = ["parser", "lua", "LuaCATS", "vimdoc", "vim", "neovim", "documentation", "help"]
+keywords = ["parser", "lua", "LuaCATS", "vimdoc", "neovim"]
 categories = ["parsing", "command-line-utilities"]
 exclude = [
     ".aur/**",
