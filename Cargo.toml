@@ -1,6 +1,6 @@
 [package]
 name = "vimcats"
-version = "0.12.0"
+version = "0.13.0"
 description = "LuaCATS parser and vimdoc transformer"
 authors = ["mrcjkb <marc@jakobi.dev>"]
 edition = "2021"
