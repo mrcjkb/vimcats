@@ -1,0 +1,56 @@
+NoDesc                                                                  *NoDesc*
+
+    Type: ~
+        string
+
+
+Lines                                                                    *Lines*
+    All the lines in the buffer
+
+    Type: ~
+        string[]
+
+
+VMode                                                                    *VMode*
+    Vim operator-mode motions.
+
+    Read `:h map-operator`
+
+    Variants: ~
+        ("line")      Vertical motion
+        ("char")      Horizontal motion
+        ("v")
+        (some.ident)  Some identifier
+
+
+U.get_all()                                                          *U.get_all*
+    Returns all the content of the buffer
+
+    Returns: ~
+        (Lines)
+
+
+U.LINES                                                                *U.LINES*
+    List of all the lines in the buffer
+    It can be more than one
+
+    Type: ~
+        (Lines)  lines in a buffer
+
+    See: ~
+        |Lines|
+
+
+U.VMODE                                                                *U.VMODE*
+    Global vim mode
+
+    Type: ~
+        (VMode)
+
+    Usage: ~
+>lua
+        print(require('plugin').VMODE)
+<
+
+
+

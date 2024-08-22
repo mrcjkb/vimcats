@@ -1,0 +1,11 @@
+==============================================================================
+Configuration                                                    *module.config*
+
+Config:get()                                                        *Config:get*
+    Get the config
+
+    Returns: ~
+        (number)
+
+
+
