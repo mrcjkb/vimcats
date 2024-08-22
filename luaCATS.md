@@ -1,6 +1,9 @@
 ## Writing Emmylua
 
-> **NOTE** - `lemmy-help` follows [LLS implementation](https://github.com/sumneko/lua-language-server/wiki/Annotations) of emmylua annotations with some little addons to better support the vimdoc generation.
+> [!NOTE]
+>
+> `vimcats` aims to be compatible with [LLS LuaCATS annotations](https://github.com/sumneko/lua-language-server/wiki/Annotations)
+> with some small add-ons to better support the vimdoc generation.
 
 Following are the tags that you can use to create docs
 
@@ -803,7 +806,7 @@ U.ok()                                                                    *U.ok*
 
 ### Export
 
-This tag is used to manually tag the exported object. This is required for cases where `lemmy-help` is unable to parse the `return` statement at the end such as `return setmetatable(...)`. But keep in mind the following:
+This tag is used to manually tag the exported object. This is required for cases where `vimcats` is unable to parse the `return` statement at the end such as `return setmetatable(...)`. But keep in mind the following:
 
 1. Anything after this tag is NA, so make sure this is the last tag
 2. Tag should be followed by the exact identifier that needs to be exported

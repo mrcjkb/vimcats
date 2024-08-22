@@ -3,60 +3,51 @@
 
 > [!WARNING]
 >
-> This lemmy-help fork is early WIP.
-> None of the documentation has been migrated yet.
+> This vimcats fork is early WIP.
+> It has not been fully migrated yet.
 
-![lemmy-help](https://user-images.githubusercontent.com/24727447/164423469-b26fea39-2ef7-497c-8156-5a4c01bc30f8.gif "Generating help docs")
+![vimcats](https://user-images.githubusercontent.com/24727447/164423469-b26fea39-2ef7-497c-8156-5a4c01bc30f8.gif "Generating help docs")
 
 ### What?
 
-`lemmy-help` is a emmylua parser as well as a CLI which takes that parsed tree and converts it into vim help docs.
+`vimcats` is a LuaCATS parser as well as a CLI
+which takes that parsed tree and converts it into vim help docs.
 
 ### Installation
 
-[![Packaging status](https://repology.org/badge/vertical-allrepos/lemmy-help.svg)](https://repology.org/project/lemmy-help/versions)
+[![Packaging status](https://repology.org/badge/vertical-allrepos/vimcats.svg)](https://repology.org/project/vimcats/versions)
 
-- Using `cargo`
+<!-- - Using `cargo` -->
+<!---->
+<!-- ```bash -->
+<!-- cargo install vimcats --features=cli -->
+<!-- ``` -->
 
-```bash
-cargo install lemmy-help --features=cli
-```
+### LuaCATS
 
-- Arch Linux
+To properly generate docs you should follow luaCATS spec.
+The parser is capable of parsing most (not all) of the LuaCATS syntax.
+You can read the following doc which can give you the idea on how to
+properly write LuaCATS annotations.
 
-```bash
-# Using yay
-yay -S lemmy-help
-
-# Using paru
-paru -S lemmy-help
-```
-
-- Using releases
-
-Check out the [release page](https://github.com/numToStr/lemmy-help/releases) for prebuild binaries available for different operating systems.
-
-### Emmylua
-
-To properly generate docs you should follow emmylua spec. The parser is capable of parsing most (not all) of the emmylua syntax. You can read the following doc which can give you the idea on how to properly write emmylua comments.
-
-- [Writing emmylua docs](./emmylua.md)
+- [Writing LuaCATS annotations](./luaCATS.md)
 
 ### Usage
 
-Using the CLI is simple just give it the path to the lua files; it will parse them and prints help doc onto **stdout**
+Using the CLI is simple just give it the path to the lua files;
+it will parse them and prints help doc to `stdout`.
 
 ```bash
-lemmy-help /path/to/{first,second,third}.lua > doc/PLUGIN_NAME.txt
+vimcats /path/to/{first,second,third}.lua > doc/PLUGIN_NAME.txt
 ```
 
-### Cli
+### CLI
 
 ```text
-lemmy-help
+vimcats
 
 USAGE:
-    lemmy-help [FLAGS] [OPTIONS] <FILES>...
+    vimcats [FLAGS] [OPTIONS] <FILES>...
 
 ARGS:
     <FILES>...                  Path to lua files
@@ -85,18 +76,18 @@ OPTIONS:
                                   ---@field, ---@param and ---@return tags
 
 USAGE:
-    lemmy-help /path/to/first.lua /path/to/second.lua > doc/PLUGIN_NAME.txt
-    lemmy-help -c -a /path/to/{first,second,third}.lua > doc/PLUGIN_NAME.txt
-    lemmy-help --layout compact:2 /path/to/plugin.lua > doc/PLUGIN_NAME.txt
+    vimcats /path/to/first.lua /path/to/second.lua > doc/PLUGIN_NAME.txt
+    vimcats -c -a /path/to/{first,second,third}.lua > doc/PLUGIN_NAME.txt
+    vimcats --layout compact:2 /path/to/plugin.lua > doc/PLUGIN_NAME.txt
 
 NOTES:
     - The order of parsing + rendering is relative to the given files
 ```
 
-### CI
+### CI [TODO]
 
 ```yaml
-name: lemmy-help
+name: vimcats
 
 on: [push]
 
@@ -106,14 +97,13 @@ env:
 jobs:
   docs:
     runs-on: ubuntu-latest
-    name: emmylua to vimdoc
+    name: luaCATS to vimdoc
     steps:
       - uses: actions/checkout@v2
 
       - name: Generating help
         run: |
-          curl -Lq https://github.com/numToStr/lemmy-help/releases/latest/download/lemmy-help-x86_64-unknown-linux-gnu.tar.gz | tar xz
-          ./lemmy-help [args] <path> > doc/${{env.PLUGIN_NAME}}.txt
+          # TODO
 
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
@@ -125,5 +115,6 @@ jobs:
 
 ### Credits
 
+- [lemmy-help](https://github.com/numToStr/lemmy-help)
 - TJ's [docgen](https://github.com/tjdevries/tree-sitter-lua#docgen) module
 - [mini.doc](https://github.com/echasnovski/mini.nvim#minidoc) from `mini.nvim` plugin
