@@ -1,5 +1,5 @@
-<h1 align="center">:cat2: cats-doc :book:</h1>
-<p align="center"><sup>A CLI to generate vim/nvim help doc from LuaCATS. Forked from lemmy-help.</sup></p>
+<h1 align="center">:cat2: vimCATS :book:</h1>
+<p align="center"><sup>A CLI to generate vimdoc from LuaCATS. Forked from lemmy-help.</sup></p>
 
 > [!WARNING]
 >
