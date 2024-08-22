@@ -82,7 +82,7 @@ impl Node {
     /// return U
     /// "#;
     ///
-    /// let nodes = lemmy_help::parser::Node::new(src).unwrap();
+    /// let nodes = vimcats::parser::Node::new(src).unwrap();
     /// assert!(!nodes.is_empty());
     /// ```
     pub fn new(src: &str) -> Result<Vec<Node>, Vec<Simple<TagType>>> {

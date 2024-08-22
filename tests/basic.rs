@@ -1,4 +1,4 @@
-use lemmy_help::{vimdoc::VimDoc, FromEmmy, LemmyHelp, Settings};
+use vimcats::{vimdoc::VimDoc, FromEmmy, LemmyHelp, Settings};
 
 macro_rules! lemmy {
     ($($src: expr),*) => {{

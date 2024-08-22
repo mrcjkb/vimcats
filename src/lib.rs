@@ -132,7 +132,7 @@ impl LemmyHelp {
     /// Creates a new parser instance
     ///
     /// ```
-    /// use lemmy_help::LemmyHelp;
+    /// use vimcats::LemmyHelp;
     ///
     /// LemmyHelp::new();
     /// ```
@@ -143,7 +143,7 @@ impl LemmyHelp {
     /// Parse given lua source code to generate AST representation
     ///
     /// ```
-    /// use lemmy_help::{LemmyHelp, Nodes};
+    /// use vimcats::{LemmyHelp, Nodes};
     ///
     /// let mut lemmy = LemmyHelp::default();
     /// let src = r#"

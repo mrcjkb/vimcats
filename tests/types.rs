@@ -1,5 +1,5 @@
 use chumsky::Parser;
-use lemmy_help::lexer::{Lexer, Member, Name, Ty};
+use vimcats::lexer::{Lexer, Member, Name, Ty};
 
 macro_rules! b {
     ($t:expr) => {
@@ -21,7 +21,7 @@ fn types() {
                     .next()
                     .unwrap()
                     .0,
-                lemmy_help::lexer::TagType::Type($ty, None)
+                vimcats::lexer::TagType::Type($ty, None)
             );
         };
     }

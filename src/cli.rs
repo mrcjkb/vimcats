@@ -1,4 +1,4 @@
-use lemmy_help::{vimdoc::VimDoc, FromEmmy, Layout, LemmyHelp, Settings};
+use vimcats::{vimdoc::VimDoc, FromEmmy, Layout, LemmyHelp, Settings};
 
 use lexopt::{
     Arg::{Long, Short, Value},
