@@ -50,7 +50,7 @@
       flake = {
         overlays.default = final: prev: {
           cats-doc = final.rustPlatform.buildRustPackage {
-            pname = "lemmy-help";
+            pname = "vimcats";
 
             src = self;
 
