@@ -1,0 +1,32 @@
+U.multi_line({opts}, {reserverd})                                 *U.multi_line*
+    Trigger a rebuild of one or more projects.
+
+    Parameters: ~
+        {opts}       (table|nil)  optional configuration options:
+                                    * {select_mode} (JdtProjectSelectMode) Show prompt
+                                       to select projects or select all. Defaults
+                                       to 'prompt'
+
+                                    * {full_build} (boolean) full rebuild or
+                                       incremental build. Defaults to true (full build)
+        {reserverd}  (table|nil)  reserved for the future use
+
+    Returns: ~
+        (boolean)
+
+
+U.missing_desc({n}, {m})                                        *U.missing_desc*
+    Multiline but missing description
+
+    Parameters: ~
+        {n}  (number)  This is a special
+
+                       number
+        {m}  (number)  And this is also
+
+
+    Returns: ~
+        (number)
+
+
+

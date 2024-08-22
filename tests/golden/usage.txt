@@ -1,0 +1,25 @@
+U.echo({msg})                                                           *U.echo*
+    Prints a message
+
+    Parameters: ~
+        {msg}  (string)  Message
+
+    Usage: ~
+>lua
+        require('module.U').sum(10, 5)
+<
+
+
+U.sum({this})                                                            *U.sum*
+    Add a number to 10
+
+    Parameters: ~
+        {this}  (number)  A number
+
+    Usage: ~
+>lua
+        require('module.U').sum(5)
+<
+
+
+

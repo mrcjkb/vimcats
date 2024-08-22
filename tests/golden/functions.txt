@@ -1,0 +1,76 @@
+U.sum({this}, {that?})                                                   *U.sum*
+    Add two integer and print it
+
+    NOTE: This will be part of the public API
+
+    Parameters: ~
+        {this}   (number)  First number
+        {that?}  (number)
+
+
+U.sub({this}, {that})                                                    *U.sub*
+    Subtract second from the first integer
+
+    Parameters: ~
+        {this}  (number)
+        {that}  (number)  Second number
+
+    Returns: ~
+        (number)  Some secret number that
+                  we don't know about
+
+    Usage: ~
+>lua
+        require('module.U').sub(10, 5)
+<
+
+
+U.magical({this}, {that})                                            *U.magical*
+    This is a magical function
+
+    Parameters: ~
+        {this}  (number)  Non-magical number #1
+        {that}  (number)  Non-magical number #2
+
+    Returns: ~
+        (number)  The magical number #1
+        (number)  The magical number #2
+                  and the fun part is the description can span
+
+                  over mulitple lines and preserves empty lines
+
+    See: ~
+        |U.mul|
+        |U.sum|
+        |U.sub|
+
+
+U.with_var_arg({...})                                           *U.with_var_arg*
+    Function with variable arguments
+
+    Parameters: ~
+        {...}  (string[])
+
+
+U.with_var_arg_end({x}, {...})                              *U.with_var_arg_end*
+
+    Parameters: ~
+        {x}    (integer)
+        {...}  (unknown)
+
+
+U.foo:bar()                                                          *U.foo:bar*
+    Class method deep access
+
+    Returns: ~
+        (table)
+
+
+U.foo.baz()                                                          *U.foo.baz*
+    Method deep access
+
+    Returns: ~
+        (table)
+
+
+

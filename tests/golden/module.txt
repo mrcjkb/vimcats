@@ -1,0 +1,44 @@
+==============================================================================
+Introduction                                                         *mod.intro*
+
+
+We can have multiple `---@mod` tags so that we can have a block only for text.
+This is for the cases where you want bunch of block only just for text
+and does not contains any code.
+
+
+==============================================================================
+Human module                                                         *mod.Human*
+
+Human                                                                    *Human*
+    The Homosapien
+
+    Fields: ~
+        {legs}   (number)   Total number of legs
+        {hands}  (number)   Total number of hands
+        {brain}  (boolean)  Does humans have brain?
+
+
+U.DEFAULT                                                            *U.DEFAULT*
+    Default traits of a human
+
+    Type: ~
+        (Human)
+
+
+U:create()                                                            *U:create*
+    Creates a Human
+
+    Returns: ~
+        (Human)
+
+    Usage: ~
+>lua
+        local H = require('Human')
+        local human = H:create()
+
+        print(getmetatable(human))
+<
+
+
+
