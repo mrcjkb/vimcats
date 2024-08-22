@@ -1,4 +1,4 @@
-## Writing Emmylua
+## Writing LuaCATS
 
 > [!NOTE]
 >
@@ -790,8 +790,8 @@ function U.ok()
 end
 
 ---@protected
-function U.no_emmy()
-    print('Protected func with no emmylua!')
+function U.no_luacats()
+    print('Protected func with no LuaCATS!')
 end
 
 return U
