@@ -20,9 +20,6 @@
       ];
       perSystem = {
         config,
-        self',
-        inputs',
-        pkgs,
         system,
         ...
       }: let
@@ -34,13 +31,14 @@
         };
       in {
         devShells.default = pkgs.mkShell {
-          name = "lemmyHelp devShell";
+          name = "vimcats devShell";
           buildInputs = with pkgs;
           with pkgs.rustPlatform; [
             cargo
             rustc
             rustfmt
             rust-analyzer
+            alejandra
           ];
         };
 
@@ -51,13 +49,24 @@
       };
       flake = {
         overlays.default = final: prev: {
-          lemmy-help = prev.lemmy-help.overrideAttrs (oa: {
+          cats-doc = final.rustPlatform.buildRustPackage {
+            pname = "lemmy-help";
+
             src = self;
-            version = ((prev.lib.importTOML "${self}/Cargo.toml").package).version;
+
+            version = ((final.lib.importTOML "${self}/Cargo.toml").package).version;
             cargoDeps = prev.rustPlatform.importCargoLock {
               lockFile = self + "/Cargo.lock";
             };
-          });
+
+            buildFeatures = ["cli"];
+
+            meta = with final.lib; {
+              description = "CLI for generating vimdoc from LuaCATS annotations";
+              license = with licenses; [mit];
+              mainProgram = "vimcats";
+            };
+          };
         };
       };
     };

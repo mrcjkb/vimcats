@@ -26,16 +26,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "2540771e65fc8cb83cd6e8a237f70c319bd5c29f78ed1084ba5d50eeac86f7f9"
 
 [[package]]
-name = "lemmy-help"
-version = "0.12.0"
-dependencies = [
- "chumsky",
- "comfy-table",
- "lexopt",
- "textwrap",
-]
-
-[[package]]
 name = "lexopt"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -112,3 +102,13 @@ name = "unicode-width"
 version = "0.1.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c0edd1e5b14653f783770bce4a4dabb4a5108a5370a5f5d8cfe8710c361f6c8b"
+
+[[package]]
+name = "vimcats"
+version = "0.12.0"
+dependencies = [
+ "chumsky",
+ "comfy-table",
+ "lexopt",
+ "textwrap",
+]
