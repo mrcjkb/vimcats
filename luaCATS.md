@@ -2,7 +2,7 @@
 
 > [!NOTE]
 >
-> `vimcats` aims to be compatible with [LLS LuaCATS annotations](https://github.com/sumneko/lua-language-server/wiki/Annotations)
+> `vimcats` aims to be compatible with [LLS LuaCATS annotations](https://luals.github.io/wiki/annotations/)
 > with some small add-ons to better support the vimdoc generation.
 
 Following are the tags that you can use to create docs
