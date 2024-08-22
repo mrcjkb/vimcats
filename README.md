@@ -118,3 +118,12 @@ jobs:
 - [lemmy-help](https://github.com/numToStr/lemmy-help)
 - TJ's [docgen](https://github.com/tjdevries/tree-sitter-lua#docgen) module
 - [mini.doc](https://github.com/echasnovski/mini.nvim#minidoc) from `mini.nvim` plugin
+
+
+### License
+
+This project is [licensed](./LICENSE) according to GPL version 2
+or (at your option) any later version.
+
+lemmy-help (from which this project is forked)
+is [licensed](./lemmy-help-LICENSE) according to MIT.

@@ -1,13 +1,13 @@
 [package]
 name = "vimcats"
-version = "0.13.0"
+version = "1.0.0"
 description = "LuaCATS parser and vimdoc transformer"
 authors = ["mrcjkb <marc@jakobi.dev>"]
 edition = "2021"
 rust-version = "1.65.0"
 homepage = "https://github.com/mrcjkb/vimcats"
 repository = "https://github.com/mrcjkb/vimcats"
-license = "MIT"
+license = "GPL-2.0+"
 readme = "README.md"
 keywords = ["parser", "lua", "LuaCATS", "vimdoc", "neovim"]
 categories = ["parsing", "command-line-utilities"]
