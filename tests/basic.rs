@@ -1,13 +1,13 @@
-use vimcats::{vimdoc::VimDoc, FromEmmy, LemmyHelp, Settings};
+use vimcats::{vimdoc::VimDoc, FromLuaCATS, VimCats, Settings};
 
-macro_rules! lemmy {
+macro_rules! vimcat {
     ($($src: expr),*) => {{
-        let mut lemmy = LemmyHelp::default();
+        let mut vimcats = VimCats::default();
         let s = Settings::default();
         $(
-            lemmy.for_help($src, &s).unwrap();
+            vimcats.for_help($src, &s).unwrap();
         )*
-        VimDoc::from_emmy(&lemmy, &s).to_string()
+        VimDoc::from_emmy(&vimcats, &s).to_string()
     }};
 }
 
@@ -44,7 +44,7 @@ fn brief() {
     "#;
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         r#"Any summary you wanted to write you can write here.
 There is no formatting here,
 the way you write in here, will be shown
@@ -86,7 +86,7 @@ fn divider_and_tag() {
     ";
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 ==============================================================================
 
@@ -143,7 +143,7 @@ fn classes() {
     ";
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 Human                                                                    *Human*
     The Homosapien
@@ -269,7 +269,7 @@ fn functions() {
     "#;
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 U.sum({this}, {that?})                                                   *U.sum*
     Add two integer and print it
@@ -388,7 +388,7 @@ fn multiline_param() {
     "#;
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 U.multi_line({opts}, {reserverd})                                 *U.multi_line*
     Trigger a rebuild of one or more projects.
@@ -479,7 +479,7 @@ fn module() {
     "#;
 
     assert_eq!(
-        lemmy!(src, src2),
+        vimcat!(src, src2),
         "\
 ==============================================================================
 Introduction                                                         *mod.intro*
@@ -548,7 +548,7 @@ fn table_of_contents() {
     ";
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 ==============================================================================
 Table of Contents                                           *my-plugin.contents*
@@ -610,7 +610,7 @@ fn alias_and_type() {
     "#;
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         r#"NoDesc                                                                  *NoDesc*
 
     Type: ~
@@ -695,7 +695,7 @@ fn usage() {
     ";
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 U.echo({msg})                                                           *U.echo*
     Prints a message
@@ -751,7 +751,7 @@ fn private() {
     ";
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 U.ok()                                                                    *U.ok*
     Only this will be documented
@@ -786,7 +786,7 @@ fn export() {
     ";
 
     assert_eq!(
-        lemmy!(src),
+        vimcat!(src),
         "\
 ==============================================================================
 Configuration                                                    *module.config*

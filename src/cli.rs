@@ -1,4 +1,4 @@
-use vimcats::{vimdoc::VimDoc, FromEmmy, Layout, LemmyHelp, Settings};
+use vimcats::{vimdoc::VimDoc, FromLuaCATS, Layout, VimCats, Settings};
 
 use lexopt::{
     Arg::{Long, Short, Value},
@@ -82,14 +82,14 @@ impl Cli {
     }
 
     pub fn run(self) {
-        let mut lemmy = LemmyHelp::new();
+        let mut vimcats = VimCats::new();
 
         for f in self.files {
             let source = read_to_string(f).unwrap();
-            lemmy.for_help(&source, &self.settings).unwrap();
+            vimcats.for_help(&source, &self.settings).unwrap();
         }
 
-        print!("{}", VimDoc::from_emmy(&lemmy, &self.settings));
+        print!("{}", VimDoc::from_emmy(&vimcats, &self.settings));
 
         if self.modeline {
             println!("vim:tw=78:ts=8:noet:ft=help:norl:");

@@ -3,7 +3,7 @@ use std::fmt::Display;
 use crate::{
     lexer::{Name, Scope},
     parser::{AliasKind, Divider, Module, Node},
-    Accept, FromEmmy, Layout, Settings, Visitor,
+    Accept, FromLuaCATS, Layout, Settings, Visitor,
 };
 
 /// Text Width
@@ -319,7 +319,7 @@ impl Visitor for VimDoc {
     }
 }
 
-impl FromEmmy for VimDoc {
+impl FromLuaCATS for VimDoc {
     type Settings = Settings;
     fn from_emmy(t: &impl crate::Nodes, s: &Self::Settings) -> Self {
         let mut shelf = Self(String::new());

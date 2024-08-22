@@ -1,4 +1,4 @@
-use vimcats::{vimdoc::VimDoc, FromEmmy, LemmyHelp, Settings};
+use vimcats::{vimdoc::VimDoc, FromLuaCATS, VimCats, Settings};
 
 const CODE: &str = r#"
 local U = {}
@@ -26,7 +26,7 @@ return U
 
 #[test]
 fn rename_with_return() {
-    let mut lemmy = LemmyHelp::new();
+    let mut vimcats = VimCats::new();
     let s = Settings {
         prefix_func: true,
         prefix_alias: true,
@@ -35,10 +35,10 @@ fn rename_with_return() {
         ..Default::default()
     };
 
-    lemmy.for_help(CODE, &s).unwrap();
+    vimcats.for_help(CODE, &s).unwrap();
 
     assert_eq!(
-        VimDoc::from_emmy(&lemmy, &s).to_string(),
+        VimDoc::from_emmy(&vimcats, &s).to_string(),
         "\
 ID                                                                        *U.ID*
 
@@ -81,7 +81,7 @@ U:create()                                                            *U:create*
 fn rename_with_mod() {
     let src = format!("---@mod awesome This is working {CODE}");
 
-    let mut lemmy = LemmyHelp::new();
+    let mut vimcats = VimCats::new();
     let s = Settings {
         prefix_func: true,
         prefix_alias: true,
@@ -90,10 +90,10 @@ fn rename_with_mod() {
         ..Default::default()
     };
 
-    lemmy.for_help(&src, &s).unwrap();
+    vimcats.for_help(&src, &s).unwrap();
 
     assert_eq!(
-        VimDoc::from_emmy(&lemmy, &s).to_string(),
+        VimDoc::from_emmy(&vimcats, &s).to_string(),
         "\
 ==============================================================================
 This is working                                                        *awesome*
@@ -155,16 +155,16 @@ end
 return M
 ";
 
-    let mut lemmy = LemmyHelp::new();
+    let mut vimcats = VimCats::new();
     let s = Settings {
         expand_opt: true,
         ..Default::default()
     };
 
-    lemmy.for_help(src, &s).unwrap();
+    vimcats.for_help(src, &s).unwrap();
 
     assert_eq!(
-        VimDoc::from_emmy(&lemmy, &s).to_string(),
+        VimDoc::from_emmy(&vimcats, &s).to_string(),
         "\
 HelloWorld                                                          *HelloWorld*
 

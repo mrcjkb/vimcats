@@ -41,12 +41,12 @@ pub trait Nodes {
     fn nodes(&self) -> &Vec<Node>;
 }
 
-pub trait FromEmmy: Display {
+pub trait FromLuaCATS: Display {
     type Settings;
     fn from_emmy(t: &impl Nodes, s: &Self::Settings) -> Self;
 }
 
-pub trait AsDoc<T: FromEmmy> {
+pub trait AsDoc<T: FromLuaCATS> {
     fn as_doc(&self, s: &T::Settings) -> T;
 }
 
@@ -112,29 +112,29 @@ impl Default for Settings {
 }
 
 #[derive(Debug, Default)]
-pub struct LemmyHelp {
+pub struct VimCats {
     nodes: Vec<Node>,
 }
 
-impl Nodes for LemmyHelp {
+impl Nodes for VimCats {
     fn nodes(&self) -> &Vec<Node> {
         &self.nodes
     }
 }
 
-impl<T: FromEmmy> AsDoc<T> for LemmyHelp {
+impl<T: FromLuaCATS> AsDoc<T> for VimCats {
     fn as_doc(&self, s: &T::Settings) -> T {
         T::from_emmy(self, s)
     }
 }
 
-impl LemmyHelp {
+impl VimCats {
     /// Creates a new parser instance
     ///
     /// ```
-    /// use vimcats::LemmyHelp;
+    /// use vimcats::VimCats;
     ///
-    /// LemmyHelp::new();
+    /// VimCats::new();
     /// ```
     pub fn new() -> Self {
         Self { nodes: vec![] }
@@ -143,9 +143,9 @@ impl LemmyHelp {
     /// Parse given lua source code to generate AST representation
     ///
     /// ```
-    /// use vimcats::{LemmyHelp, Nodes};
+    /// use vimcats::{VimCats, Nodes};
     ///
-    /// let mut lemmy = LemmyHelp::default();
+    /// let mut vimcats = VimCats::default();
     /// let src = r#"
     /// local U = {}
     ///
@@ -159,7 +159,7 @@ impl LemmyHelp {
     /// return U
     /// "#;
     ///
-    /// let ast = lemmy.parse(&src).unwrap();
+    /// let ast = vimcats.parse(&src).unwrap();
     /// assert!(!ast.nodes().is_empty());
     /// ```
     pub fn parse(&mut self, src: &str) -> Result<&Self, Vec<Simple<TagType>>> {
@@ -168,7 +168,7 @@ impl LemmyHelp {
         Ok(self)
     }
 
-    /// Similar to [`LemmyHelp::parse`], but specifically used for generating vimdoc
+    /// Similar to [`VimCats::parse`], but specifically used for generating vimdoc
     pub fn for_help(
         &mut self,
         src: &str,
