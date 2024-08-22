@@ -17,11 +17,11 @@ which takes that parsed tree and converts it into vim help docs.
 
 [![Packaging status](https://repology.org/badge/vertical-allrepos/vimcats.svg)](https://repology.org/project/vimcats/versions)
 
-<!-- - Using `cargo` -->
-<!---->
-<!-- ```bash -->
-<!-- cargo install vimcats --features=cli -->
-<!-- ``` -->
+- Using `cargo`
+
+```bash
+cargo install vimcats --features=cli
+```
 
 ### LuaCATS
 
