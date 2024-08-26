@@ -1,0 +1,19 @@
+lz.n.KeysBase : vim.keymap.set.Opts                              *lz.n.KeysBase*
+
+    Fields: ~
+        {desc?}     (string)
+        {noremap?}  (boolean)
+        {remap?}    (boolean)
+        {expr?}     (boolean)
+        {nowait?}   (boolean)
+        {ft?}       (string|string[])
+
+
+lz.n.KeysSpec : lz.n.KeysBase                                    *lz.n.KeysSpec*
+
+    Fields: ~
+        {mode?}  (string|string[])  @field [1] string lhs
+                                    @field [2]? string|fun()|false rhs
+
+
+
