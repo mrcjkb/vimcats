@@ -80,7 +80,7 @@ NOTES:
     - The order of parsing + rendering is relative to the given files
 ```
 
-### CI [TODO]
+### CI
 
 ```yaml
 name: vimcats
@@ -95,11 +95,16 @@ jobs:
     runs-on: ubuntu-latest
     name: luaCATS to vimdoc
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
-      - name: Generating help
-        run: |
-          # TODO
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@master
+
+      - name: Install vimcats
+        run: cargo install vimcats --features=cli
+
+      - name: Generate docs
+        run: vimcats [args] <path> > doc/${{env.PLUGIN_NAME}}.txt
 
       - name: Commit
         uses: stefanzweifel/git-auto-commit-action@v4
