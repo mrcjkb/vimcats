@@ -187,8 +187,10 @@ impl Lexer {
             ))
         });
 
+        let numeric = filter(|x: &char| x.is_numeric()).repeated().collect::<String>();
         let code_lang = ident().then_ignore(space).or_not();
         let generic_ident = just('[').ignore_then(ident()).then_ignore(just(']'));
+        let list_index = just('[').ignore_then(numeric).then_ignore(just(']'));
 
         let tag = just('@').ignore_then(choice((
             hidden.or(public.clone().ignored()).to(TagType::Skip),
@@ -238,7 +240,7 @@ impl Lexer {
             just("field")
                 .ignore_then(space.ignore_then(private.or(public)).or_not())
                 .then_ignore(space)
-                .then(ident().or(generic_ident))
+                .then(ident().or(generic_ident).or(list_index))
                 .then(optional)
                 .then_ignore(space)
                 .then(ty.clone())

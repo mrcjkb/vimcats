@@ -12,8 +12,9 @@ lz.n.KeysBase : vim.keymap.set.Opts                              *lz.n.KeysBase*
 lz.n.KeysSpec : lz.n.KeysBase                                    *lz.n.KeysSpec*
 
     Fields: ~
-        {mode?}  (string|string[])  @field [1] string lhs
-                                    @field [2]? string|fun()|false rhs
+        {1}      (string)              lhs
+        {2?}     (string|fun()|false)  rhs
+        {mode?}  (string|string[])
 
 
 

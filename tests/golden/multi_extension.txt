@@ -1,5 +1,9 @@
                                                                *lz.n.PluginSpec*
 lz.n.PluginSpec : lz.n.PluginBase, lz.n.PluginSpecHandlers, lz.n.PluginHooks
 
+    Fields: ~
+        {1}  (string)
+                        The plugin name (not its main module), e.g. "sweetie.nvim"
+
 
 
