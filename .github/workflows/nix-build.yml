@@ -1,0 +1,33 @@
+---
+name: "Nix build"
+on:
+  pull_request:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    name: ${{ matrix.attribute }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        job:
+          - { os: ubuntu-20.04, target: x86_64-linux }
+          - { os: macos-13, target: x86_64-darwin }
+          - { os: macos-14, target: aarch64-darwin }
+    steps:
+    - uses: actions/checkout@v4
+    - uses: DeterminateSystems/nix-installer-action@v9
+    - uses: cachix/cachix-action@v14
+      with:
+        name: mrcjkb
+        authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
+    - name: Checks
+      run: nix flake check -Lv --accept-flake-config
+      shell: bash
+    - name: Build package
+      run: nix build ".#packages.${{matrix.job.target}}.default" 
+      shell: bash
+    - name: Build devShell
+      run: nix build ".#devShells.${{matrix.job.target}}.default" 
+      shell: bash
