@@ -121,7 +121,7 @@ like [git-hooks.nix](https://github.com/cachix/git-hooks.nix).
 
 Here is basic example:
 
-> [NOTE]
+> [!NOTE]
 >
 > You will likely want to ajust the flake to be used
 > with multiple systems.
