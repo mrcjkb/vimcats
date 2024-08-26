@@ -1,11 +1,7 @@
 <h1 align="center">:cat2: vimCATS :book:</h1>
 <p align="center"><sup>A CLI to generate vimdoc from LuaCATS. Forked from lemmy-help.</sup></p>
 
-> [!WARNING]
->
-> **This fork is early WIP.**
-> It has not been fully migrated yet.
-
+<!-- TODO: Update gif -->
 ![vimcats](https://user-images.githubusercontent.com/24727447/164423469-b26fea39-2ef7-497c-8156-5a4c01bc30f8.gif "Generating help docs")
 
 ### What?
