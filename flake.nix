@@ -1,6 +1,11 @@
 {
   description = "A CLI to generate vim/nvim help doc from emmylua";
 
+  nixConfig = {
+    extra-substituters = "https://mrcjkb.cachix.org";
+    extra-trusted-public-keys = "mrcjkb.cachix.org-1:KhpstvH5GfsuEFOSyGjSTjng8oDecEds7rbrI96tjA4=";
+  };
+
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
