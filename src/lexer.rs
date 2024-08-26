@@ -22,6 +22,7 @@ impl Lexer {
     pub fn init() -> impl Parser<char, Vec<Spanned>, Error = Simple<char>> {
         let triple = just("---");
         let space = just(' ').repeated().at_least(1);
+        let comma = just(',').padded();
         let till_eol = take_until(newline());
 
         let comment = till_eol.map(|(x, _)| x.iter().collect());
@@ -82,8 +83,12 @@ impl Lexer {
             .repeated()
             .collect();
 
+        let names = name.separated_by(comma)
+            .collect::<Vec<_>>()
+            .map(|items| items.join(", "))
+            .or(name);
+
         let ty = recursive(|inner| {
-            let comma = just(',').padded();
             let colon = just(':').padded();
 
             let any = just("any").to(Ty::Any);
@@ -228,7 +233,7 @@ impl Lexer {
             just("class")
                 .ignore_then(space.ignore_then((exact_attr.ignore_then(space)).or_not()))
                 .ignore_then(name)
-                .then(just(':').padded().ignore_then(name).or_not())
+                .then(just(':').padded().ignore_then(names).or_not())
                 .map(|(name, parent)| TagType::Class(name, parent)),
             just("field")
                 .ignore_then(space.ignore_then(private.or(public)).or_not())
