@@ -26,8 +26,8 @@ jobs:
       run: nix flake check -Lv --accept-flake-config
       shell: bash
     - name: Build package
-      run: nix build ".#packages.${{matrix.job.target}}.default" 
+      run: nix build ".#packages.${{matrix.job.target}}.default" --accept-flake-config
       shell: bash
     - name: Build devShell
-      run: nix build ".#devShells.${{matrix.job.target}}.default" 
+      run: nix build ".#devShells.${{matrix.job.target}}.default" --accept-flake-config
       shell: bash
