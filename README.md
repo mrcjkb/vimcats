@@ -165,7 +165,18 @@ Here is basic example:
       };
     };
   in {
-    checks = {
+    devShells.${system}.default = {
+      pkgs.mkShell {
+        buildInputs = [
+          docgen
+        ];
+        shellHook = ''
+          # Installs a docgen pre-commit hook
+          ${git-hooks-check.shellHook}
+        '';
+      };
+    };
+    checks.${system} = {
       inherit git-hooks-check;
     };
   };
