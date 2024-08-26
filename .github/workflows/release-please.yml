@@ -19,3 +19,4 @@ jobs:
         with:
           release-type: rust
           include-component-in-tag: false
+          token: ${{ secrets.PAT }}
