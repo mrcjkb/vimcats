@@ -6,8 +6,8 @@ on:
     branches: [ main ]
 jobs:
   build:
-    name: ${{ matrix.attribute }} / ${{ matrix.os }}
-    runs-on: ${{ matrix.os }}
+    name: Nix build (${{ matrix.job.target }})
+    runs-on: ${{ matrix.job.os }}
     strategy:
       fail-fast: false
       matrix:
