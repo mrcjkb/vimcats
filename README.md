@@ -114,6 +114,64 @@ jobs:
           file_pattern: doc/*.txt
 ```
 
+### Nix flake
+
+This project provides a flake so you can use it with frameworks
+like [git-hooks.nix](https://github.com/cachix/git-hooks.nix).
+
+Here is basic example:
+
+> [NOTE]
+>
+> You will likely want to ajust the flake to be used
+> with multiple systems.
+
+```nix
+{ 
+  inputs = {
+    git-hooks.url = "github:cachix/git-hooks.nix";
+    vimcats.url = "github:mrcjkb/vimcats";
+  };
+  
+  outputs = {
+    self,
+    nixpkgs,
+    git-hooks,
+    vimcats,
+    ...
+  }: let
+    system = "x86_64-linux";
+    pkgs = nixpkgs.legacyPackages.${system};
+    docgen = final.writeShellApplication {
+      name = "docgen";
+      runtimeInputs = [
+        inputs.vimcats.packages.${final.system}.default
+      ];
+      text = ''
+        mkdir -p doc
+        vimcats [args] <path> > doc/<plugin-name>.txt
+      '';
+    };
+    git-hooks-check = git-hooks.lib.${system}.run {
+      src = self;
+      hooks = {
+        docgen = {
+          enable = true;
+          name = "docgen";
+          entry = "${pkgs.docgen}/bin/docgen";
+          files = "\\.(lua)$";
+          pass_filenames = false;
+        };
+      };
+    };
+  in {
+    checks = {
+      inherit git-hooks-check;
+    };
+  };
+}
+```
+
 ### Credits
 
 - [lemmy-help](https://github.com/numToStr/lemmy-help)
