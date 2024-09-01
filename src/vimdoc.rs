@@ -213,6 +213,29 @@ impl Visitor for VimDoc {
         table.to_string()
     }
 
+    fn r#enum(&self, n: &crate::parser::Enum, s: &Self::S) -> Self::R {
+        let mut doc = String::new();
+        doc.push_str(&header(&n.name, &n.name));
+        if !n.desc.is_empty() {
+            doc.push_str(&description(&n.desc.join("\n"), s.indent_width));
+        }
+        doc.push('\n');
+        if !n.values.is_empty() {
+            doc.push_str(&description("Values: ~", s.indent_width));
+            doc.push_str(&self.enum_values(&n.values, s));
+            doc.push('\n');
+        }
+        doc
+    }
+
+    fn enum_values(&self, n: &[crate::parser::EnumValue], s: &Self::S) -> Self::R {
+        let mut table = Table::new(s.indent_width);
+        for value in n {
+            table.add_row([format!("{}", &value.name), value.desc.join("\n")]);
+        }
+        table.to_string()
+    }
+
     fn alias(&self, n: &crate::parser::Alias, s: &Self::S) -> Self::R {
         let mut doc = String::new();
         if let Some(prefix) = &n.prefix.right {

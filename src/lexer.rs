@@ -248,6 +248,10 @@ impl Lexer {
                 .map(|((((scope, name), opt), ty), desc)| {
                     TagType::Field(scope.unwrap_or(Scope::Public), opt(name), ty, desc)
                 }),
+            just("enum")
+                .ignore_then(name.padded())
+                .then_ignore(till_eol) // table declaration, e.g. `local MyEnum = {`
+                .map(|name| TagType::Enum(name)),
             just("alias")
                 .ignore_then(space)
                 .ignore_then(name)
@@ -318,6 +322,9 @@ impl Lexer {
             .map(|(prefix, op)| (prefix, op));
 
         let expr = ident().then(dot_op).then_ignore(assign);
+        let variable = ident()
+            .then_ignore(assign)
+            .then_ignore(till_eol.or_not());
 
         choice((
             triple.ignore_then(choice((tag, variant, comment.map(TagType::Comment)))),
@@ -329,6 +336,7 @@ impl Lexer {
                     Some(_) => TagType::Func(prefix, Op::Deep(op)),
                     None => TagType::Expr(prefix, Op::Deep(op)),
                 }),
+            variable.map(|name| TagType::Variable(name)),
             ret.ignore_then(ident().padded())
                 .then_ignore(end())
                 .map(TagType::Export),

@@ -1,0 +1,20 @@
+rocks.ExperimentalFeature                            *rocks.ExperimentalFeature*
+    Experimental features that can be enabled
+
+    Values: ~
+        ext_module_dependency_stubs       Whether to install rocks stubs when using extensions
+                                          like rocks-git.nvim or rocks-dev.nvim
+                                          so that luarocks recognises them as dependencies
+        some_other_experimental_feature   Some other experimental feature
+
+
+RustAnalyzerCmd                                                *RustAnalyzerCmd*
+
+    Values: ~
+        start
+        stop
+        restart
+        reload_settings
+
+
+
