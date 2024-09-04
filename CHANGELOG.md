@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/mrcjkb/vimcats/compare/v1.0.2...v1.1.0) (2024-09-04)
+
+
+### Features
+
+* **parser:** support `---[@enum](https://github.com/enum)` ([#18](https://github.com/mrcjkb/vimcats/issues/18)) ([060b1c4](https://github.com/mrcjkb/vimcats/commit/060b1c44a9c47b72963bd4bcd736a38bcc2fb120))
+
 ## [1.0.2](https://github.com/mrcjkb/vimcats/compare/v1.0.1...v1.0.2) (2024-08-26)
 
 
