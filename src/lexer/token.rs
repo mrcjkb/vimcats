@@ -73,6 +73,14 @@ pub enum TagType {
     /// ```
     Field(Scope, Name, Ty, Option<String>),
     /// ```lua
+    /// <variable> = <value>
+    /// ```
+    Variable(String),
+    /// ```lua
+    /// ---@enum <name>
+    /// ```
+    Enum(String),
+    /// ```lua
     /// -- Simple Alias
     /// ---@alias <name> <type>
     ///

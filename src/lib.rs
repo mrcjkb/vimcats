@@ -9,7 +9,7 @@ use std::{fmt::Display, str::FromStr};
 use chumsky::prelude::Simple;
 
 use parser::{
-    Alias, Brief, Class, Divider, Field, Func, Module, Node, Param, Return, See, Tag, Type, Usage,
+    Alias, Brief, Class, Divider, Enum, Field, Func, Module, Node, Param, Return, See, Tag, Type, Usage, EnumValue,
 };
 
 use crate::lexer::TagType;
@@ -26,6 +26,8 @@ pub trait Visitor {
     fn r#returns(&self, n: &[Return], s: &Self::S) -> Self::R;
     fn class(&self, n: &Class, s: &Self::S) -> Self::R;
     fn fields(&self, n: &[Field], s: &Self::S) -> Self::R;
+    fn r#enum(&self, n: &Enum, s: &Self::S) -> Self::R;
+    fn enum_values(&self, n: &[EnumValue], s: &Self::S) -> Self::R;
     fn alias(&self, n: &Alias, s: &Self::S) -> Self::R;
     fn r#type(&self, n: &Type, s: &Self::S) -> Self::R;
     fn toc(&self, n: &str, nodes: &[Node], s: &Self::S) -> Self::R;

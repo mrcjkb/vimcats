@@ -5,7 +5,7 @@ use chumsky::{
 
 use crate::{
     lexer::{Lexer, TagType},
-    parser::{Alias, Brief, Class, Divider, Func, Module, Tag, Type},
+    parser::{Alias, Brief, Class, Divider, Enum, Func, Module, Tag, Type},
     Accept, Visitor,
 };
 
@@ -19,6 +19,7 @@ pub enum Node {
     Tag(Tag),
     Func(Func),
     Class(Class),
+    Enum(Enum),
     Alias(Alias),
     Type(Type),
     Export(String),
@@ -33,6 +34,7 @@ impl_parse!(Node, Option<Self>, {
         Tag::parse().map(Self::Tag),
         Func::parse().map(Self::Func),
         Class::parse().map(Self::Class),
+        Enum::parse().map(Self::Enum),
         Alias::parse().map(Self::Alias),
         Type::parse().map(Self::Type),
         select! {
@@ -50,6 +52,7 @@ impl<T: Visitor> Accept<T> for Node {
         match self {
             Self::Brief(x) => x.accept(n, s),
             Self::Tag(x) => x.accept(n, s),
+            Self::Enum(x) => x.accept(n, s),
             Self::Alias(x) => x.accept(n, s),
             Self::Func(x) => x.accept(n, s),
             Self::Class(x) => x.accept(n, s),

@@ -1,5 +1,7 @@
 mod divider;
 pub use divider::*;
+mod r#enum;
+pub use r#enum::*;
 mod alias;
 pub use alias::*;
 mod brief;
