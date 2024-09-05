@@ -21,9 +21,9 @@ cargo install vimcats --features=cli
 
 ### LuaCATS
 
-To properly generate docs you should follow luaCATS spec.
+To properly generate docs you should follow the luaCATS spec.
 The parser is capable of parsing most (not all) of the LuaCATS syntax.
-You can read the following doc which can give you the idea on how to
+You can read the following doc which can give you an idea on how to
 properly write LuaCATS annotations.
 
 - [Writing LuaCATS annotations](./luaCATS.md)
