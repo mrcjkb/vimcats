@@ -68,6 +68,7 @@
             ++ self.checks.${system}.git-hooks-check.enabledPackages
             ++ (with pkgs; [
               rust-analyzer
+              cargo-nextest
             ]);
           inherit (git-hooks-check) shellHook;
           doCheck = false;
