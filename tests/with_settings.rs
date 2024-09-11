@@ -1,4 +1,4 @@
-use vimcats::{vimdoc::VimDoc, FromLuaCATS, VimCats, Settings};
+use vimcats::{vimdoc::VimDoc, FromLuaCATS, Settings, VimCats};
 
 const CODE: &str = r#"
 local U = {}

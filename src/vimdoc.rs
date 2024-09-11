@@ -231,7 +231,7 @@ impl Visitor for VimDoc {
     fn enum_values(&self, n: &[crate::parser::EnumValue], s: &Self::S) -> Self::R {
         let mut table = Table::new(s.indent_width);
         for value in n {
-            table.add_row([format!("{}", &value.name), value.desc.join("\n")]);
+            table.add_row([value.name.to_string(), value.desc.join("\n")]);
         }
         table.to_string()
     }

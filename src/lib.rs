@@ -9,7 +9,8 @@ use std::{fmt::Display, str::FromStr};
 use chumsky::prelude::Simple;
 
 use parser::{
-    Alias, Brief, Class, Divider, Enum, Field, Func, Module, Node, Param, Return, See, Tag, Type, Usage, EnumValue,
+    Alias, Brief, Class, Divider, Enum, EnumValue, Field, Func, Module, Node, Param, Return, See,
+    Tag, Type, Usage,
 };
 
 use crate::lexer::TagType;

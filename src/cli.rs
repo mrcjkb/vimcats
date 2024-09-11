@@ -1,4 +1,4 @@
-use vimcats::{vimdoc::VimDoc, FromLuaCATS, Layout, VimCats, Settings};
+use vimcats::{vimdoc::VimDoc, FromLuaCATS, Layout, Settings, VimCats};
 
 use lexopt::{
     Arg::{Long, Short, Value},

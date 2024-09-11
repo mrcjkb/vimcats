@@ -18,7 +18,7 @@ const C: [char; 3] = ['.', '_', '-'];
 pub struct Lexer;
 
 impl Lexer {
-    /// Parse emmylua/lua files into rust token
+    /// Parse luaCATS/lua files into rust token
     pub fn init() -> impl Parser<char, Vec<Spanned>, Error = Simple<char>> {
         let triple = just("---");
         let space = just(' ').repeated().at_least(1);
@@ -83,7 +83,8 @@ impl Lexer {
             .repeated()
             .collect();
 
-        let names = name.separated_by(comma)
+        let names = name
+            .separated_by(comma)
             .collect::<Vec<_>>()
             .map(|items| items.join(", "))
             .or(name);
@@ -187,7 +188,9 @@ impl Lexer {
             ))
         });
 
-        let numeric = filter(|x: &char| x.is_numeric()).repeated().collect::<String>();
+        let numeric = filter(|x: &char| x.is_numeric())
+            .repeated()
+            .collect::<String>();
         let code_lang = ident().then_ignore(space).or_not();
         let generic_ident = just('[').ignore_then(ident()).then_ignore(just(']'));
         let list_index = just('[').ignore_then(numeric).then_ignore(just(']'));
@@ -251,7 +254,7 @@ impl Lexer {
             just("enum")
                 .ignore_then(name.padded())
                 .then_ignore(till_eol) // table declaration, e.g. `local MyEnum = {`
-                .map(|name| TagType::Enum(name)),
+                .map(TagType::Enum),
             just("alias")
                 .ignore_then(space)
                 .ignore_then(name)
@@ -322,9 +325,7 @@ impl Lexer {
             .map(|(prefix, op)| (prefix, op));
 
         let expr = ident().then(dot_op).then_ignore(assign);
-        let variable = ident()
-            .then_ignore(assign)
-            .then_ignore(till_eol.or_not());
+        let variable = ident().then_ignore(assign).then_ignore(till_eol.or_not());
 
         choice((
             triple.ignore_then(choice((tag, variant, comment.map(TagType::Comment)))),
@@ -336,7 +337,7 @@ impl Lexer {
                     Some(_) => TagType::Func(prefix, Op::Deep(op)),
                     None => TagType::Expr(prefix, Op::Deep(op)),
                 }),
-            variable.map(|name| TagType::Variable(name)),
+            variable.map(TagType::Variable),
             ret.ignore_then(ident().padded())
                 .then_ignore(end())
                 .map(TagType::Export),
